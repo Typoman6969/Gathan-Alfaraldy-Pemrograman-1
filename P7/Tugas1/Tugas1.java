@@ -5,39 +5,59 @@ import java.util.Scanner;
 public class Tugas1 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.print("Pilih menu (1. pengeluaran 7 hari | 2. Cek Kelulusan): ");
-        int pilihan = in.nextInt();
+        
+        System.out.print("Masukkan Jumlah SKS (2 ATAU 3): ");
+        int sks = in.nextInt();
 
-        if (pilihan == 1) {
-            String[] nama = {"Makanan", "Transport", "Belanja"};
-            double[] biaya = new double[3];
+        System.out.print("Masukkan Jumlah Kehadiran: ");
+        int kehadiran = in.nextInt();
 
-            for (int i = 1; i <= 7; i++) {
-                System.out.println("Hari ke-" + i + "---");
-                double total = 0;
+        System.out.print("Masukkan Nilai Tugas (0 - 100): ");
+        int nilaiTugas = in.nextInt();
 
-                for (int j = 0; j < 3; j++) {
-                    System.out.print("Biaya " + nama[j] + ": ");
-                    biaya[j] = in.nextDouble();
-                    total += biaya[j];
+        System.out.print("Masukkan Nilai UTS (0 - 100): ");
+        int nilaiUTS = in.nextInt();
+
+        System.out.print("Masukkan Nilai UAS (0 - 100): ");
+        int nilaiUAS = in.nextInt();
+
+        int presentaseKehadiran = (kehadiran * 100) / ((sks == 2) ? 14 : 16);
+
+        int hadir = presentaseKehadiran * 10/100;
+        int tugas = nilaiTugas * 20/100;
+        int uts = nilaiUTS * 30/100;
+        int uas = nilaiUAS * 40/100;
+
+        int nilaiAkhir = hadir + tugas + uts + uas;
+
+
+        if (presentaseKehadiran >= 75) {
+                System.out.println("Anda memenuhi syarat kehadiran.");
+                System.out.println("Nilai anda adalah: " + nilaiAkhir);
+                
+                if (nilaiAkhir >= 80) {
+                    System.out.println("A.");
+                } else if (nilaiAkhir >= 70) {
+                    System.out.println("B.");
+                } else if (nilaiAkhir >= 60) {
+                    System.out.println("C.");
+                } else if (nilaiAkhir >= 55) {
+                    System.out.println("D.");
+                } else if (nilaiAkhir < 55) {
+                    System.out.println("E.");
+                } else {
+
                 }
-
-                if (total > 0) {
-                    System.out.printf("Persentase -> Makanan: %.1f%% | Transport: %.1f%% | Belanja: %.1f%%\n",(biaya [0]/total)*100, (biaya[1]/total)*100, (biaya[2]/total)*100);
-                }
-            }
-        } else if (pilihan == 2) {
-            System.out.print("\nMasukkan jumlah kehadiran & nilai akhir (pisahkan dengan spasi): ");
-            int hadir = in.nextInt(), nilai = in.nextInt();
-
-            if (hadir >= (21 * 75 / 100)) {
-                char grade = nilai >= 80 ? 'A' : nilai >= 70 ? 'B' : nilai >= 60 ? 'C' : nilai >= 55 ? 'D' : 'E';
-                System.out.println(" Syarat kehadiran terpenuhi. Nilai: " + nilai + " (Grade" + grade + ")");
+                
             } else {
-                System.out.println("Maaf, tidak memenuhi syarat kehadiran. ");
+                if (nilaiAkhir >= 55) {
+                    System.out.println("Anda tidak memenuhi syarat kehadiran.");
+                    System.out.println("Nilai anda adalah:  55, Grade anda D");
+                } else {
+                    System.out.println("Anda tidak memenuhi syarat kehadiran.");
+                    System.out.println("Nilai anda adalah: " + nilaiAkhir + "Grade anda E.");
+                    in.close();
+                }
             }
-
-            in.close();
         }
     }
-}
