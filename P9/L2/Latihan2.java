@@ -82,7 +82,7 @@ public class Latihan2 {
         );
 
         SMA sma = new SMA(
-            "SMAN 2 Tangse",
+            "SMAN 2 Tangsel",
             "Jl.Puspiptek",
             "021xxxx",
             "SMA"
