@@ -1,4 +1,4 @@
-package P8.L2;
+package P08.L2;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package P9.L1;
+package P09.L1;
 
 class Line {
     private double x1, x2, y1, y2;

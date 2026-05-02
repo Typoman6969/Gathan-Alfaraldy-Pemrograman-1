@@ -1,4 +1,4 @@
-package P9.L2;
+package P09.L2;
 
 abstract class LivingThing {
     public void breath() {
